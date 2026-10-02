@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.lock {
+    font-size: 100px;
+    cursor: pointer;
+    transition: 0.5s;
+    filter: drop-shadow(0 8px 15px rgba(0,0,0,.2));
+}
+
+.lock:hover {
+    transform: scale(1.1);
+}
+
+.hint {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.message {
+    display: none;
+    animation: muncul 1s ease;
+}
+
+.message h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.message p {
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4f81;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.heart {
+    position: fixed;
+    top: -30px;
+    font-size: 25px;
+    animation: jatuh linear forwards;
+    pointer-events: none;
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: scale(.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes jatuh {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="awal">
+        <div class="lock" onclick="bukaGembok()">🔒</div>
+        <div class="hint">Klik gemboknya untuk membuka sesuatu ❤️</div>
+    </div>
+
+    <div class="message" id="pesan">
+        <h1>🔓 Terbuka!</h1>
+
+        <p>
+            FOR NOAH CLAUSIUS ❤️
+            <br><br>
+            Aku mungkin nggak selalu bisa mengatakan
+            semuanya dengan sempurna...
+            <br>
+            tapi ada satu hal yang selalu aku tahu:
+            <br><br>
+            <b>Aku senang bisa mengenal kamu.</b> 💗
+            <br><br>
+            Terima kasih sudah menjadi seseorang
+            yang begitu berarti.
+            <br>
+            Semoga senyum kamu selalu punya alasan
+            untuk tetap ada. 🌷
+            <br><br>
+            <b>Jangan lupa ya...</b>
+            <br>
+            kamu itu spesial. ❤️
+        </p>
+
+        <button onclick="buatHati()">Klik lagi 💕</button>
+    </div>
+
+</div>
+
+<script>
+function bukaGembok() {
+
+    document.getElementById("awal").style.display = "none";
+
+    const pesan = document.getElementById("pesan");
+    pesan.style.display = "block";
+
+    buatHati();
+
+    setInterval(() => {
+        buatHati();
+    }, 500);
+}
+
+function buatHati() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const bentuk = ["❤️","💗","💖","💕","💘","💓"];
+    heart.innerHTML =
+        bentuk[Math.floor(Math.random() * bentuk.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (3 + Math.random() * 4) + "s";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 25) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 7000);
+}
+</script>
+
+</body>
+</html>
